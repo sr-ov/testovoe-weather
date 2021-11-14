@@ -10,12 +10,14 @@ import { useValidationResult } from '~/hooks/useValidationResult'
 import { useWeather } from '~/hooks/useWeather'
 import { required, pattern } from '~/utils/validationRules'
 
+const QUANTITY = 10
+
 export default defineComponent({
     setup() {
         const route = useRoute()
         const city = route.value.params.city ?? 'minsk'
         const inputValue = reactive({ value: city })
-        const { weather, request, isLoading } = useWeather(city, 10)
+        const { weather, request, isLoading } = useWeather(city, QUANTITY)
         const rules = reactive({
             value: [required(), pattern(/^[a-zA-Z\s]+$/)],
         })
@@ -26,7 +28,7 @@ export default defineComponent({
             const isValid = checkResult()
             if (isValid) {
                 try {
-                    await request(inputValue.value, 10)
+                    await request(inputValue.value, QUANTITY)
                 } catch (error) {
                     console.error(error)
                 }
@@ -34,7 +36,7 @@ export default defineComponent({
         }
 
         onMounted(async () => {
-            await request(city, 10)
+            await request(city, QUANTITY)
         })
 
         return {

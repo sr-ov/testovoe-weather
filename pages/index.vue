@@ -3,10 +3,12 @@ import { defineComponent, ref, watch, onMounted } from '@nuxtjs/composition-api'
 import { useCityFromStorage } from '~/hooks/useCityFromStorage'
 import { useWeather } from '~/hooks/useWeather'
 
+const QUANTITY = 4
+
 export default defineComponent({
     setup() {
         const { city, setCity } = useCityFromStorage()
-        const { weather, request, isLoading } = useWeather(city.value, 4)
+        const { weather, request, isLoading } = useWeather(city.value, QUANTITY)
         const items = ref([
             { title: 'Минск', query: 'minsk' },
             { title: 'Москва', query: 'moscow' },
@@ -19,7 +21,7 @@ export default defineComponent({
         watch(selectedItem, async (newValue) => {
             try {
                 const { query } = items.value[newValue]
-                await request(query, 4)
+                await request(query, QUANTITY)
                 setCity(query)
             } catch (error) {
                 console.error(error)
@@ -27,7 +29,7 @@ export default defineComponent({
         })
 
         onMounted(async () => {
-            await request(city.value, 4)
+            await request(city.value, QUANTITY)
         })
 
         return {
