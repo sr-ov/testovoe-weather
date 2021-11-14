@@ -52,7 +52,6 @@ export default defineComponent({
                 v-for="item in items"
                 :key="item.title"
                 :label="item.title"
-                class="my-tabs"
             >
                 <div class="weather-columns mb-6 mt-5">
                     <div class="weather-column">
