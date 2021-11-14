@@ -61,7 +61,4 @@ export default {
     padding-top: 20px;
     margin-bottom: 10px;
 }
-.my-link {
-    padding: 6px 12px 10px;
-}
 </style>
