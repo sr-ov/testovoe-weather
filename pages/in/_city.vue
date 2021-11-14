@@ -34,7 +34,7 @@ export default defineComponent({
         }
 
         onMounted(async () => {
-            await request(city, 4)
+            await request(city, 10)
         })
 
         return {
