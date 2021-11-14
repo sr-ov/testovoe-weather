@@ -1,0 +1,28 @@
+.form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.weather-columns {
+    display: grid;
+    grid-template-columns: minmax(260px, 260px) minmax(260px, 260px) minmax(
+            260px,
+            260px
+        );
+    justify-content: center;
+    gap: 50px;
+}
+.weather-column {
+    background-color: #e4dcfa;
+    padding: 15px;
+    border-radius: 15px;
+}
+@media (max-width: 1033px) {
+    .weather-columns {
+        grid-template-columns: minmax(260px, auto) minmax(260px, auto);
+    }
+}
+@media (max-width: 650px) {
+    .weather-columns {
+        grid-template-columns: minmax(260px, auto);
+    }
+}
