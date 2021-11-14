@@ -16,8 +16,8 @@ export default defineComponent({
     setup() {
         const route = useRoute()
         const city = route.value.params.city ?? 'minsk'
-        const inputValue = reactive({ value: city })
         const { weather, request, isLoading } = useWeather(city, QUANTITY)
+        const inputValue = reactive({ value: city })
         const rules = reactive({
             value: [required(), pattern(/^[a-zA-Z\s]+$/)],
         })
